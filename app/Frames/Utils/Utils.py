@@ -8,6 +8,7 @@ class Utils(customtkinter.CTkFrame):
 
     def setInputs(self):
         self.SearchInput = customtkinter.CTkEntry(master=self, placeholder_text="Search", text_color="black", width=230)
+        self.SearchInput.configure(fg_color="white", border_color="white")
         self.SearchInput.grid(row=0, column=0, padx=(10, 2), pady=10, sticky="w")
         self.searchButton = customtkinter.CTkButton(self, text='find', command=self.search)
         self.searchButton.grid(row=0, column=1, padx=(2, 2), pady=10, sticky="w")

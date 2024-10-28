@@ -53,6 +53,10 @@ class UsersCrud(customtkinter.CTkFrame):
         print(id)
         if self.modal is None:
             self.modal = UserModal(master=self)
+            
+    def destroyModal(self):
+        self.modal.destroy()
+        self.modal = None
     
     def delete(self,id):
         self.controller.Delete(id)

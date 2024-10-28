@@ -20,13 +20,11 @@ class DynamicTable(customtkinter.CTkFrame):
             for col_index, cell in enumerate(row):
                 cell_label = customtkinter.CTkLabel(container, text=str(cell), padx=5, pady=5)
                 cell_label.grid(row=row_index + 1, column=col_index, sticky="nsew", padx=2, pady=2)
-            edit_button = customtkinter.CTkButton(container, text="Editar", 
-                                                  command=lambda r=row: self.edit_row(r), width=50)
+            edit_button = customtkinter.CTkButton(container, text="Editar", command=lambda r=row: self.edit_row(r), width=50)
             edit_button.grid(row=row_index + 1, column=len(headers) - 2, sticky="nsew", padx=2, pady=2)
             delete_button = customtkinter.CTkButton(container, text="Eliminar", 
                                                     command=lambda r=row: self.delete_row(r), width=50)
             delete_button.grid(row=row_index + 1, column=len(headers) - 1, sticky="nsew", padx=2, pady=2)
-        
         for col_index in range(len(headers)):
             container.grid_columnconfigure(col_index, weight=1)
 
