@@ -1,7 +1,7 @@
 import customtkinter
 from Frames.Login.login import login
 from Frames.Register.register import register
-from assets.themes.green import ThemeGreen
+from assets.themes.AdminPalette import AdminTheme
 
 
 class App(customtkinter.CTk):
@@ -9,7 +9,7 @@ class App(customtkinter.CTk):
         super().__init__()
         self.geometry("900x600")  # Tamaño de la ventana principal
         self.title("Loggin")
-        self.configure(fg_color=ThemeGreen['primary'])
+        self.configure(fg_color=AdminTheme['background'])
         self.currentCard = None
         self.switchButtonTextContent = 'registrarse'
         self.setSwitchButton()
@@ -34,6 +34,7 @@ class App(customtkinter.CTk):
 
     def setSwitchButton(self):
         self.SwitchButton = customtkinter.CTkButton(master= self,text=self.switchButtonTextContent, command=self.toggleCard)
+        self.SwitchButton.configure(fg_color=AdminTheme['new'])
         self.SwitchButton.grid(row=1, column=1, padx=10, pady=10)
         self.grid_columnconfigure(0, weight=1)
         self.grid_columnconfigure(3, weight=1)

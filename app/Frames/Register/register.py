@@ -1,6 +1,7 @@
 import customtkinter
 from dto.User import UserDto,authenticationDto
 from controller.AuthController import AuthController
+from assets.themes.AdminPalette import AdminTheme
 
 class register(customtkinter.CTkFrame):
     def __init__(self, master, **kwargs):
@@ -8,8 +9,8 @@ class register(customtkinter.CTkFrame):
         self.roles = ['Admin','Doctor','Secretaria']
         self.rolValue = {'Admin':1,'Doctor':2,'Secretaria':3}
         super().__init__(master, **kwargs)
-        self.configure(fg_color="#d9d9d9", corner_radius=15, width=500, height=250)
-        self.label = customtkinter.CTkLabel(self, text="crear cuenta", font=("Arial", 18), text_color="black")
+        self.configure(fg_color=AdminTheme['secondary'], corner_radius=15, width=500, height=250)
+        self.label = customtkinter.CTkLabel(self, text="crear cuenta", font=("Arial", 18), text_color="white")
         self.label.place(x=20, y=30)
         self.setForm()
 
@@ -35,8 +36,8 @@ class register(customtkinter.CTkFrame):
         self.role = customtkinter.CTkComboBox(self, values=self.roles, command=self.combobox_callback,text_color='black')
         self.role.place(x=190,y=160)
         self.role.configure(fg_color="white", border_color="white")
-        self.button = customtkinter.CTkButton(self, text="Crear", width=200, text_color="black", hover_color="#8de6a5", command=self.createAcount)
-        self.button.configure(fg_color="#a5efc1")
+        self.button = customtkinter.CTkButton(self, text="Crear", width=200, text_color=AdminTheme['primary'], hover_color="#5a5fa9", command=self.createAcount)
+        self.button.configure(fg_color=AdminTheme['primary-accent'])
         self.button.place(x=280, y=205)
         
     def combobox_callback(self,choice):

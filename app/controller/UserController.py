@@ -5,5 +5,8 @@ class UserController():
     def __init__(self) -> None:
         self.Myservice = UserService()
 
-    def RegisterUser(self,auth:authenticationDto, user:UserDto):
-        self.Myservice.CreateUser(auth,user)
+    def getUsers(self):
+        return self.Myservice.GetUsers()
+    
+    def Delete(self,Id:int):
+        return self.Myservice.Delete(Id)

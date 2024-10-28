@@ -34,8 +34,23 @@ class UserService():
     def searchByid(self):
         pass
 
-    def Delete(self):
-        pass
+    def Delete(self,id):
+        endpoint = self.Base_Url + f'User/delete/user_id?id={id}'
+        try:
+            response = requests.delete(endpoint)
+            if response.status_code == 200:
+                return response.json()
+        except Exception as e:
+            return f"Error al crear credenciales: {e}"
+
+    def GetUsers(self):
+        endpoint = self.Base_Url + 'users'
+        try:
+            response = requests.get(endpoint)
+            if response.status_code == 200:
+                return response.json()
+        except Exception as e:
+            return f"Error al crear credenciales: {e}"
 
 
 class AuthService():
