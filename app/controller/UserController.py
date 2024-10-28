@@ -10,3 +10,9 @@ class UserController():
     
     def Delete(self,Id:int):
         return self.Myservice.Delete(Id)
+    
+    def findById(self,Id:int):
+        return self.Myservice.searchByid(Id)
+
+    def findByName(self,Name:str):
+        return self.Myservice.SearchByname(Name)

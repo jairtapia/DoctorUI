@@ -28,11 +28,23 @@ class UserService():
     def EditUser(self):
         pass
 
-    def SearchByname(self):
-        pass
+    def SearchByname(self,name):
+        endpoint = self.Base_Url + f'User/find/name/fname?name={name}'
+        try:
+            response = requests.get(endpoint)
+            if response.status_code == 200:
+                return response.json()
+        except Exception as e:
+            return f"Error al crear credenciales: {e}"
 
-    def searchByid(self):
-        pass
+    def searchByid(self,id):
+        endpoint = self.Base_Url + f'User/find/user_id?id={id}'
+        try:
+            response = requests.get(endpoint)
+            if response.status_code == 200:
+                return response.json()
+        except Exception as e:
+                return f"Error al crear credenciales: {e}"
 
     def Delete(self,id):
         endpoint = self.Base_Url + f'User/delete/user_id?id={id}'

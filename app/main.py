@@ -3,7 +3,6 @@ from Frames.Login.login import login
 from Frames.Register.register import register
 from assets.themes.AdminPalette import AdminTheme
 
-
 class App(customtkinter.CTk):
     def __init__(self):
         super().__init__()
