@@ -5,6 +5,7 @@ from Frames.Crud.Users import UsersCrud
 from Frames.Crud.Appointment import AppointmentCrud
 from Frames.Crud.Patients import PatientsCrud
 
+
 class AdminApp(customtkinter.CTk):
     def __init__(self):
         super().__init__()
@@ -35,5 +36,6 @@ class AdminApp(customtkinter.CTk):
             self.currentCrud = PatientsCrud(master=self)
         elif message == "Citas":
             self.currentCrud = AppointmentCrud(master=self)
+
         print(message)
         self.ShowCurrentCrud()

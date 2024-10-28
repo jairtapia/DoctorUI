@@ -19,6 +19,8 @@ class navigator(customtkinter.CTkFrame):
         
     def sendNotification(self,message):
         self.master.updateCrud(message)
+    
+    
 
 if __name__ =="__main__":
     class App(customtkinter.CTk):

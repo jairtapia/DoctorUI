@@ -46,13 +46,15 @@ class UsersCrud(customtkinter.CTkFrame):
         elif isinstance(Searchvalue, str):
             valor = self.controller.findByName(Searchvalue)
         self.data = valor
-        print(self.data)
         self.updateTable()
 
     def openModal(self, id=None):
-        print(id)
         if self.modal is None:
-            self.modal = UserModal(master=self)
+            self.modal = UserModal(master=self,id = id)
+            self.modal.protocol("WM_DELETE_WINDOW", self.destroyModal)
+            self.modal.grab_set()  # Para evitar interacción con otras ventanas
+            self.modal.lift()  # Elevar la ventana modal
+            self.modal.focus_set()
             
     def destroyModal(self):
         self.modal.destroy()
