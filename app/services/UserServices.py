@@ -15,6 +15,8 @@ class UserService():
             response = requests.post(endpoint,json=user.dict())
             if response.status_code == 200:
                 return response.json()
+            else:
+                messagebox.showerror("Error", f"User data Not created: {response.status_code}")
         except Exception as e:
             return f"Error al crear usuario: {e}"
         
@@ -25,6 +27,8 @@ class UserService():
             response = requests.post(endpoint,json=crd.dict())
             if response.status_code == 200:
                 return response.json()
+            else:
+                messagebox.showerror("Error", f"User crd not created: {response.status_code}")
         except Exception as e:
             return f"Error al crear credenciales: {e}"
 
@@ -46,6 +50,8 @@ class UserService():
             response = requests.get(endpoint)
             if response.status_code == 200:
                 return response.json()
+            else:
+                messagebox.showerror("Error", f"User Not Found: {response.status_code}")
         except Exception as e:
             return f"Error al crear credenciales: {e}"
 
@@ -55,6 +61,8 @@ class UserService():
             response = requests.get(endpoint)
             if response.status_code == 200:
                 return response.json()
+            else:
+                messagebox.showerror("Error", f"User Not Found: {response.status_code}")
         except Exception as e:
                 return f"Error al crear credenciales: {e}"
 
@@ -64,6 +72,8 @@ class UserService():
             response = requests.delete(endpoint)
             if response.status_code == 200:
                 return response.json()
+            else:
+                messagebox.showerror("Error", f"User Not Deleted: {response.status_code}")
         except Exception as e:
             return f"Error al crear credenciales: {e}"
 
@@ -73,6 +83,8 @@ class UserService():
             response = requests.get(endpoint)
             if response.status_code == 200:
                 return response.json()
+            else:
+                messagebox.showerror("Error", f"Bad Request: {response.status_code}")
         except Exception as e:
             return f"Error al crear credenciales: {e}"
 
@@ -90,7 +102,7 @@ class AuthService():
                 user = response.json()
                 return user
             else:
-                return response.json()
+                messagebox.showerror("Error", f"Something went wrong: {response.json()}")
         except Exception as e:
             return f"Error credenciales invalidas: {e}"
         

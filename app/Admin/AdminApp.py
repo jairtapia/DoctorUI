@@ -7,8 +7,9 @@ from Frames.Crud.Patients import PatientsCrud
 
 
 class AdminApp(customtkinter.CTk):
-    def __init__(self):
+    def __init__(self,rol, **kwargs):
         super().__init__()
+        self.CurrentRole = rol
         self.geometry("900x600")  # Tamaño de la ventana principal
         self.title("gestor de Administrador")
         self.configure(fg_color=AdminTheme['background'])
@@ -18,7 +19,7 @@ class AdminApp(customtkinter.CTk):
         self.navigator.configure(width=200)  # Ancho máximo deseado del menú
 
         # Frame de contenido (CRUD)
-        self.currentCrud = UsersCrud(master=self)
+        self.currentCrud = UsersCrud(master=self,role=self.CurrentRole)
         self.ShowCurrentCrud()
 
         # Configuración dinámica del CRUD (expandible)
@@ -31,7 +32,7 @@ class AdminApp(customtkinter.CTk):
     def updateCrud(self, message):
         self.currentCrud.destroy()
         if message == "Usuarios":
-            self.currentCrud = UsersCrud(master=self)
+            self.currentCrud = UsersCrud(master=self,role=self.CurrentRole)
         elif message == "Pacientes":
             self.currentCrud = PatientsCrud(master=self)
         elif message == "Citas":

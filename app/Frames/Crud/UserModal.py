@@ -1,12 +1,14 @@
 import customtkinter
 from controller.UserController import UserController
 from assets.themes.AdminPalette import AdminTheme
+from tkinter import messagebox
 
 class UserModal(customtkinter.CTkToplevel):
-    def __init__(self, master,id, **kwargs):
-        self.controller = UserController()
+    def __init__(self, master,id,role, **kwargs):
         super().__init__(master, **kwargs)
+        self.controller = UserController()
         self.geometry("250x370")
+        self.currentRole = role
         self.title("formulario usuario")  # Establecer el tamaño del modal
         self.configure(fg_color=AdminTheme['secondary'], corner_radius=15)
         self.id = id
@@ -70,5 +72,7 @@ class UserModal(customtkinter.CTkToplevel):
         self.master.saveUser(self.rolValue[self.userRole])
 
     def EditUser(self):
-        print(f'editando usuario {self.id}')
-        self.master.editUser(self.rolValue[self.userRole],self.id)
+        if self.rolValue[self.userRole] == 1 and self.currentRole != 1:
+            messagebox.showerror("Error", f"Something went wrong: no tienes permisos de administrador")
+        else:
+            self.master.editUser(self.rolValue[self.userRole],self.id)

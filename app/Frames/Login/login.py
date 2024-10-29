@@ -37,7 +37,9 @@ class login(customtkinter.CTkFrame):
         if login is not None:
             self.master.destroy()
             if login['user_type'] == 1:
-                newWindow = AdminApp()
+                newWindow = AdminApp(rol=1)
+            elif login['user_type'] == 3:
+                newWindow = AdminApp(rol=3)
             elif login['user_type'] == 2:
                 newWindow = DoctorApp()
             newWindow.mainloop()

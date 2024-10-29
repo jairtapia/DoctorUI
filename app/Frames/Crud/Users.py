@@ -8,7 +8,8 @@ from Frames.Table.DynamicTable import DynamicTable
 from dto.User import UserDto
 from dto.User import authenticationDto
 class UsersCrud(customtkinter.CTkFrame):
-    def __init__(self, master, **kwargs):
+    def __init__(self, master,role, **kwargs):
+        self.currentRole = role
         super().__init__(master, **kwargs)
         self.controller = UserController()
         self.saveController =AuthController()
@@ -26,6 +27,7 @@ class UsersCrud(customtkinter.CTkFrame):
         self.grid_columnconfigure(1, weight=1)
         self.grid_columnconfigure(2, weight=1)
         self.grid_rowconfigure(2, weight=1)
+        print(self.currentRole)
         
     def updateTable(self):
         # Asegúrate de que self.data sea una lista de diccionarios o listas
@@ -58,7 +60,7 @@ class UsersCrud(customtkinter.CTkFrame):
 
     def openModal(self, id=None):
         if self.modal is None:
-            self.modal = UserModal(master=self,id = id)
+            self.modal = UserModal(master=self,id = id,role=self.currentRole)
             self.modal.protocol("WM_DELETE_WINDOW", self.destroyModal)
             self.modal.grab_set()  # Para evitar interacción con otras ventanas
             self.modal.lift()  # Elevar la ventana modal
@@ -79,8 +81,14 @@ class UsersCrud(customtkinter.CTkFrame):
         )
         print(id)
         print(self.controller.EditUser(usuario,id))
+        if self.currentRole == 1:
+            self.editCrd()
         self.destroyModal()
         self.updateData()
+
+    def editCrd(self):
+        print(self.modal.email.get())
+        print(self.modal.password.get())
     
     def saveUser(self,rol):
         usuario = UserDto(

@@ -7,16 +7,21 @@ class Utils(customtkinter.CTkFrame):
         self.setInputs()
 
     def setInputs(self):
-        self.SearchInput = customtkinter.CTkEntry(master=self, placeholder_text="Search", text_color="black", width=230)
+        self.SearchInput = customtkinter.CTkEntry(master=self, placeholder_text="buscar", text_color="black", width=230)
         self.SearchInput.configure(fg_color="white", border_color="white")
         self.SearchInput.grid(row=0, column=0, padx=(10, 2), pady=10, sticky="w")
-        self.searchButton = customtkinter.CTkButton(self, text='find', command=self.search)
+        self.searchButton = customtkinter.CTkButton(self, text='buscar', command=self.search)
         self.searchButton.grid(row=0, column=1, padx=(2, 2), pady=10, sticky="w")
         self.CreateButton = customtkinter.CTkButton(self, text='Nuevo', command=self.openModal)
         self.CreateButton.grid(row=0, column=2, padx=(2, 10), pady=10, sticky="w")
+        self.ClearButton = customtkinter.CTkButton(self, text='recargar', command=self.clear)
+        self.ClearButton.grid(row=0, column=3, padx=(2, 10), pady=10, sticky="w")
 
     def search(self):
         self.master.search()
 
     def openModal(self):
         self.master.openModal()
+
+    def clear(self):
+        self.master.updateData()
