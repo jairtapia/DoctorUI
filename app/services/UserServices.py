@@ -1,6 +1,9 @@
 from dto.User import UserDto,authenticationDto
 import requests
 import json
+from tkinter import messagebox
+
+
 
 class UserService():
     def __init__(self):
@@ -25,8 +28,17 @@ class UserService():
         except Exception as e:
             return f"Error al crear credenciales: {e}"
 
-    def EditUser(self):
-        pass
+    def EditUser(self,user:UserDto,id:int):
+        endpoint = self.Base_Url + f'User/edit/user_id?id={id}'
+        try:
+            response = requests.put(endpoint,json=user.dict())
+            if response.status_code == 200:
+                return response.json()
+            else:
+                messagebox.showerror("Error", f"Failed to edit user: {response.status_code}")
+        except Exception as e:
+            return f"Error al crear credenciales: {e}"
+        
 
     def SearchByname(self,name):
         endpoint = self.Base_Url + f'User/find/name/fname?name={name}'

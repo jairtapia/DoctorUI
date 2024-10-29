@@ -2,12 +2,16 @@ import customtkinter
 import pandas as pd
 from Frames.Crud.UserModal import UserModal
 from Frames.Utils.Utils import Utils
-from controller.UserController import UserController
+from controller.UserController import UserController 
+from controller.AuthController import AuthController
 from Frames.Table.DynamicTable import DynamicTable
+from dto.User import UserDto
+from dto.User import authenticationDto
 class UsersCrud(customtkinter.CTkFrame):
     def __init__(self, master, **kwargs):
         super().__init__(master, **kwargs)
         self.controller = UserController()
+        self.saveController =AuthController()
         self.table = None
         self.modal = None
         self.configure(fg_color="#d9d9d9", corner_radius=15, width=500, height=550)
@@ -48,6 +52,10 @@ class UsersCrud(customtkinter.CTkFrame):
         self.data = valor
         self.updateTable()
 
+    def updateData(self):
+        self.data = self.controller.getUsers()
+        self.updateTable()
+
     def openModal(self, id=None):
         if self.modal is None:
             self.modal = UserModal(master=self,id = id)
@@ -55,11 +63,43 @@ class UsersCrud(customtkinter.CTkFrame):
             self.modal.grab_set()  # Para evitar interacción con otras ventanas
             self.modal.lift()  # Elevar la ventana modal
             self.modal.focus_set()
-            
+
     def destroyModal(self):
         self.modal.destroy()
         self.modal = None
+
+            
+    def editUser(self,rol,id):
+        usuario = UserDto(
+            user_name=self.modal.name.get(),
+            last_name_f=self.modal.firstName.get(),
+            last_name_m=self.modal.SecondName.get(),
+            telefono=self.modal.phone.get(),
+            user_type=rol,
+        )
+        print(id)
+        print(self.controller.EditUser(usuario,id))
+        self.destroyModal()
+        self.updateData()
+    
+    def saveUser(self,rol):
+        usuario = UserDto(
+            user_name=self.modal.name.get(),
+            last_name_f=self.modal.firstName.get(),
+            last_name_m=self.modal.SecondName.get(),
+            telefono=self.modal.phone.get(),
+            user_type=rol,
+        )
+        Credenciales = authenticationDto(
+            email =  self.modal.email.get(),
+            password = self.modal.password.get()
+        )
+        self.saveController.RegisterUser(Credenciales,usuario)
+        self.destroyModal()
+        self.updateData()
+        
     
     def delete(self,id):
         self.controller.Delete(id)
+        self.updateData()
 

@@ -67,8 +67,8 @@ class UserModal(customtkinter.CTkToplevel):
 
     def CreateNew(self):
         print("creando uno nuevo")
-        self.master.destroyModal()
+        self.master.saveUser(self.rolValue[self.userRole])
 
     def EditUser(self):
         print(f'editando usuario {self.id}')
-        self.master.destroyModal()
+        self.master.editUser(self.rolValue[self.userRole],self.id)

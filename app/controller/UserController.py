@@ -16,3 +16,6 @@ class UserController():
 
     def findByName(self,Name:str):
         return self.Myservice.SearchByname(Name)
+    
+    def EditUser(self, user:UserDto, id:int):
+        return self.Myservice.EditUser(user,id)
