@@ -18,7 +18,7 @@ class UserService():
             else:
                 messagebox.showerror("Error", f"User data Not created: {response.status_code}")
         except Exception as e:
-            return f"Error al crear usuario: {e}"
+            messagebox.showerror("Error", f"unknown error: {e}")
         
 
     def CreateCrd(self,crd:authenticationDto):
@@ -30,7 +30,7 @@ class UserService():
             else:
                 messagebox.showerror("Error", f"User crd not created: {response.status_code}")
         except Exception as e:
-            return f"Error al crear credenciales: {e}"
+            messagebox.showerror("Error", f"unknown error: {e}")
 
     def EditUser(self,user:UserDto,id:int):
         endpoint = self.Base_Url + f'User/edit/user_id?id={id}'
@@ -41,7 +41,7 @@ class UserService():
             else:
                 messagebox.showerror("Error", f"Failed to edit user: {response.status_code}")
         except Exception as e:
-            return f"Error al crear credenciales: {e}"
+            messagebox.showerror("Error", f"unknown error: {e}")
         
 
     def SearchByname(self,name):
@@ -53,7 +53,7 @@ class UserService():
             else:
                 messagebox.showerror("Error", f"User Not Found: {response.status_code}")
         except Exception as e:
-            return f"Error al crear credenciales: {e}"
+            messagebox.showerror("Error", f"unknown error: {e}")
 
     def searchByid(self,id):
         endpoint = self.Base_Url + f'User/find/user_id?id={id}'
@@ -64,7 +64,7 @@ class UserService():
             else:
                 messagebox.showerror("Error", f"User Not Found: {response.status_code}")
         except Exception as e:
-                return f"Error al crear credenciales: {e}"
+                messagebox.showerror("Error", f"unknown error: {e}")
 
     def Delete(self,id):
         endpoint = self.Base_Url + f'User/delete/user_id?id={id}'
@@ -75,7 +75,7 @@ class UserService():
             else:
                 messagebox.showerror("Error", f"User Not Deleted: {response.status_code}")
         except Exception as e:
-            return f"Error al crear credenciales: {e}"
+            messagebox.showerror("Error", f"unknown error: {e}")
 
     def GetUsers(self):
         endpoint = self.Base_Url + 'users'
@@ -86,7 +86,7 @@ class UserService():
             else:
                 messagebox.showerror("Error", f"Bad Request: {response.status_code}")
         except Exception as e:
-            return f"Error al crear credenciales: {e}"
+            messagebox.showerror("Error", f"unknown error: {e}")
 
 
 class AuthService():
@@ -104,7 +104,7 @@ class AuthService():
             else:
                 messagebox.showerror("Error", f"Something went wrong: {response.json()}")
         except Exception as e:
-            return f"Error credenciales invalidas: {e}"
+            messagebox.showerror("Error", f"unknown error: {e}")
         
 
     def sign_in(self,Auth:authenticationDto, User:UserDto):
@@ -114,4 +114,4 @@ class AuthService():
             print(storageService.CreateUser(User))
             return "Usuario creado exitosamente"
         except Exception as e:
-            return f"Error al crear usuario: {e}"
+            messagebox.showerror("Error", f"unknown error: {e}")
