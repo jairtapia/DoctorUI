@@ -1,7 +1,7 @@
 import customtkinter
 from assets.themes.AdminPalette import AdminTheme
 from controller.AppointmentController import appointmentController
-class appointments(customtkinter.CTkScrollableFrame):
+class Patients(customtkinter.CTkScrollableFrame):
     def __init__(self, master, id,**kwargs):
         super().__init__(master, **kwargs)
         self.MyController = appointmentController()

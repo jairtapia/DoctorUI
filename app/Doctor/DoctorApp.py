@@ -14,7 +14,7 @@ class DoctorApp(customtkinter.CTk):
         self.grid_rowconfigure(0, weight=1)  # Permitir que la fila 0 se expanda
         self.grid_rowconfigure(1, weight=1)  # Permitir que la fila 1 se expanda
         self.grid_columnconfigure(0, weight=1) 
-        self.info = info(master=self,id=1)
+        self.info = info(master=self,id=self.id)
         self.info.grid(row=0, column=0, sticky="nsew", padx=(10,5), pady=10)
         self.navigator = navigator(master=self, id=self.id)
         self.navigator.grid(row=1, column=0, sticky="nsew", padx=(10,5), pady=10)

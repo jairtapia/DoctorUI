@@ -29,17 +29,19 @@ class PatientsCrud(customtkinter.CTkFrame):
         pass
 
     def updateTable(self):
-        # Asegúrate de que self.data sea una lista de diccionarios o listas
         if isinstance(self.data, dict):
-            self.df = pd.DataFrame([self.data])  # Convierte el diccionario en una lista de un solo elemento
+            self.df = pd.DataFrame([self.data])  
         elif isinstance(self.data, list) and all(isinstance(i, dict) for i in self.data):
-            self.df = pd.DataFrame(self.data)  # Lista de diccionarios
+            self.df = pd.DataFrame(self.data)  
         elif isinstance(self.data, list) and all(isinstance(i, list) for i in self.data):
-            self.df = pd.DataFrame(self.data)  # Lista de listas
+            self.df = pd.DataFrame(self.data) 
         else:
-            self.df = pd.DataFrame()  # Crea un DataFrame vacío si no se cumple ninguna condición
+            self.df = pd.DataFrame()  
         if self.table is not None:
             self.table.destroy()
         self.table = DynamicTable(self,dataframe=self.df)
         self.table.grid(row=2, column=0, columnspan=3, padx=10, pady=10, sticky="nsew")
 
+'''
+aqui crea las funciones del modal y de options 
+'''
