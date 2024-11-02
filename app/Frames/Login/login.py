@@ -41,7 +41,7 @@ class login(customtkinter.CTkFrame):
             elif login['user_type'] == 3:
                 newWindow = AdminApp(rol=3)
             elif login['user_type'] == 2:
-                newWindow = DoctorApp()
+                newWindow = DoctorApp(id=login['user_id'])
             newWindow.mainloop()
             
 
