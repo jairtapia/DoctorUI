@@ -3,6 +3,7 @@ from controller.UserController import UserController
 from assets.themes.AdminPalette import AdminTheme
 from tkinter import messagebox
 
+
 class UserModal(customtkinter.CTkToplevel):
     def __init__(self, master,id,role, **kwargs):
         super().__init__(master, **kwargs)

@@ -2,6 +2,8 @@ import customtkinter
 import pandas as pd
 from Frames.Table.DynamicTable import DynamicTable
 from Frames.Utils.Utils import Utils
+from controller.AppointmentController import appointmentController
+from Frames.Crud.AppointmentModal import AppointmentScheduler
 
 class AppointmentCrud(customtkinter.CTkFrame):
     def __init__(self, master, **kwargs):
@@ -10,13 +12,9 @@ class AppointmentCrud(customtkinter.CTkFrame):
         self.label = customtkinter.CTkLabel(master=self, text="Gestor de Citas", text_color="black", font=("Arial", 20))
         self.label.grid(row=0, column=0, padx=10, pady=10, sticky="w")
         self.table = None
-        self.data = [
-            {'product_id': 1, 'name': 'Laptop', 'category': 'Electronics', 'price': 1000, 'stock_quantity': 50},
-            {'product_id': 2, 'name': 'Smartphone', 'category': 'Electronics', 'price': 600, 'stock_quantity': 150},
-            {'product_id': 3, 'name': 'Tablet', 'category': 'Electronics', 'price': 300, 'stock_quantity': 200},
-            {'product_id': 4, 'name': 'Headphones', 'category': 'Accessories', 'price': 100, 'stock_quantity': 100},
-            {'product_id': 5, 'name': 'Smartwatch', 'category': 'Wearables', 'price': 200, 'stock_quantity': 75}
-        ]
+        self.modal = None
+        self.controller = appointmentController()
+        self.data = self.controller.getAppointments()
         self.updateTable()
         self.Options = Utils(master=self)
         self.Options.grid(row=1, column=0, padx=(10, 2), pady=10, sticky="w")
@@ -25,8 +23,10 @@ class AppointmentCrud(customtkinter.CTkFrame):
         self.grid_columnconfigure(2, weight=1)
         self.grid_rowconfigure(2, weight=1)
 
-    def setInputs(self):
-        pass
+    def updateData(self):
+        self.data = self.controller.getAppointments()
+        self.updateTable()
+
     def updateTable(self):
         # Asegúrate de que self.data sea una lista de diccionarios o listas
         if isinstance(self.data, dict):
@@ -41,3 +41,27 @@ class AppointmentCrud(customtkinter.CTkFrame):
             self.table.destroy()
         self.table = DynamicTable(self,dataframe=self.df)
         self.table.grid(row=2, column=0, columnspan=3, padx=10, pady=10, sticky="nsew")
+    
+    def search(self):
+        Searchvalue = self.Options.SearchInput.get()
+        if Searchvalue.isdigit():
+            Searchvalue = int(Searchvalue)
+            valor = self.controller.findById(Searchvalue)
+        self.data = valor
+        self.updateTable()
+
+    def openModal(self, id=None):
+        if self.modal is None:
+            self.modal = AppointmentScheduler(master=self,patientId = id,doctorId=1)
+            self.modal.protocol("WM_DELETE_WINDOW", self.destroyModal)
+            self.modal.grab_set()  # Para evitar interacción con otras ventanas
+            self.modal.lift()  # Elevar la ventana modal
+            self.modal.focus_set()
+
+    def destroyModal(self):
+        self.modal.destroy()
+        self.modal = None
+
+    def delete(self,id):
+        self.controller.Delete(id)
+        self.updateData()
