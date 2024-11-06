@@ -30,7 +30,6 @@ class App(customtkinter.CTk):
         self.SwitchButton.configure(text=self.switchButtonTextContent)
         self.showCurrentCard()
 
-
     def setSwitchButton(self):
         self.SwitchButton = customtkinter.CTkButton(master= self,text=self.switchButtonTextContent, command=self.toggleCard)
         self.SwitchButton.configure(fg_color=AdminTheme['new'])
