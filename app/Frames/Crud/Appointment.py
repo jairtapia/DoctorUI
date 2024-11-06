@@ -52,7 +52,7 @@ class AppointmentCrud(customtkinter.CTkFrame):
 
     def openModal(self, id=None):
         if self.modal is None:
-            self.modal = AppointmentScheduler(master=self,patientId = id,doctorId=1)
+            self.modal = AppointmentScheduler(master=self,citaId = id ,doctorId=1)
             self.modal.protocol("WM_DELETE_WINDOW", self.destroyModal)
             self.modal.grab_set()  # Para evitar interacción con otras ventanas
             self.modal.lift()  # Elevar la ventana modal

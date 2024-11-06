@@ -79,6 +79,26 @@ class appointmentService():
         except Exception as e:
             messagebox.showerror("Error", f"unknown error: {e}")
 
+    def edit(self,cita:AppointmentDto,id:int):
+        print(id)
+        endpoint = self.Base_Url + f'appointments/update/{id}'
+        cita_dict = {
+            "date": cita.date.strftime('%Y-%m-%d'),
+            "time": cita.time.strftime('%H:%M:%S'),
+            "patient_id": cita.patient_id,
+            "doctor_id": cita.doctor_id,
+            "clinic_room_id": cita.clinic_room_id
+        }
+        print(cita_dict)  # Aquí puedes ver el formato de los datos antes de enviarlos
+        try:
+            response = requests.put(endpoint,json=cita_dict)
+            if response.status_code == 200:
+                return response.json()
+            else:
+                messagebox.showerror("Error", f"appointment Not Edited: {response.status_code}")
+        except Exception as e:
+            messagebox.showerror("Error", f"unknown error: {e}")
+
 
 
 

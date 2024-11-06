@@ -22,3 +22,6 @@ class appointmentController():
     
     def Delete(self,id:int):
         return self.Myservice.Delete(id)
+
+    def edit(self,cita:AppointmentDto,id:int):
+        return self.Myservice.edit(cita,id)
