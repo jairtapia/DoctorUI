@@ -4,6 +4,9 @@ from Frames.Navigator.navigator import navigator
 from Frames.Crud.Users import UsersCrud
 from Frames.Crud.Appointment import AppointmentCrud
 from Frames.Crud.Patients import PatientsCrud
+from Frames.Crud.Disease import DiseaseCrud
+from Frames.Crud.Signs import SignsCrud
+from Frames.Crud.Symptoms import SymptomsCrud
 
 
 class AdminApp(customtkinter.CTk):
@@ -31,12 +34,19 @@ class AdminApp(customtkinter.CTk):
 
     def updateCrud(self, message):
         self.currentCrud.destroy()
-        if message == "Usuarios":
-            self.currentCrud = UsersCrud(master=self,role=self.CurrentRole)
-        elif message == "Pacientes":
-            self.currentCrud = PatientsCrud(master=self)
-        elif message == "Citas":
-            self.currentCrud = AppointmentCrud(master=self)
-
-        print(message)
+        match message:
+            case "Usuarios":
+                self.currentCrud = UsersCrud(master=self, role=self.CurrentRole)
+            case "Pacientes":
+                self.currentCrud = PatientsCrud(master=self)
+            case "Citas":
+                self.currentCrud = AppointmentCrud(master=self)
+            case "Enfermedades":
+                self.currentCrud = DiseaseCrud(master=self, role=self.CurrentRole)
+            case "Signos":
+                self.currentCrud = SignsCrud(master=self, role=self.CurrentRole)
+            case "Sintomas":
+                self.currentCrud = SymptomsCrud(master=self, role=self.CurrentRole)
+            case "Exit":
+                self.destroy()
         self.ShowCurrentCrud()

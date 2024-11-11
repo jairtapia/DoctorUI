@@ -82,6 +82,7 @@ class PatientsCrud(customtkinter.CTkFrame):
             address=self.modal.address.get(),  # Agrega el campo de dirección
             state=self.modal.state.get()  # Agrega el campo de estado
         )
+        print(patient)
         result = self.controller.CreatePatient(patient)
         if result:
             messagebox.showinfo("Éxito", "Paciente guardado correctamente.")

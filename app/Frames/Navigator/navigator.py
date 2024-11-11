@@ -16,23 +16,14 @@ class navigator(customtkinter.CTkFrame):
         self.OptionPacientesscrd.grid(row=1, column=0, padx=10, pady=(5, 5))
         self.OptionDatesscrd = customtkinter.CTkButton(master=self, text="Citas", command=lambda: self.sendNotification("Citas"))
         self.OptionDatesscrd.grid(row=2, column=0, padx=10, pady=(5, 5))
+        self.OptionDisease = customtkinter.CTkButton(master=self, text="Enfermedades", command=lambda: self.sendNotification("Enfermedades"))
+        self.OptionDisease.grid(row=3, column=0, padx=10, pady=(5, 5))
+        self.OptionSign = customtkinter.CTkButton(master=self, text="Signos", command=lambda: self.sendNotification("Signos"))
+        self.OptionSign.grid(row=4, column=0, padx=10, pady=(5, 5))
+        self.OptionSymptoms = customtkinter.CTkButton(master=self, text="Sintomas", command=lambda: self.sendNotification("Sintomas"))
+        self.OptionSymptoms.grid(row=5, column=0, padx=10, pady=(5, 5))
+        self.OptionSettings = customtkinter.CTkButton(master=self, text="Salir", command=lambda: self.sendNotification("Exit"))
+        self.OptionSettings.grid(row=6, column=0, padx=10, pady=(5, 5))
         
     def sendNotification(self,message):
         self.master.updateCrud(message)
-    
-    
-
-if __name__ =="__main__":
-    class App(customtkinter.CTk):
-        def __init__(self):
-            super().__init__()
-            self.geometry("900x600")  # Tamaño de la ventana principal
-            self.title("test Frame")
-            self.frame = navigator(master=self)
-            self.frame.grid(row=0, column=0, sticky="nsew",pady = 10,padx=5)
-
-        def updateCrud(self, message):
-            print(message)
-        
-    app = App()
-    app.mainloop()        
