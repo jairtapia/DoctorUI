@@ -2,6 +2,7 @@ import requests
 import json
 from tkinter import messagebox
 from dto.Disease import DiseaseDto
+from typing import List
 class DiseaseService():
     def __init__(self):
         self.Base_Url = "http://127.0.0.1:8000/"
@@ -95,6 +96,7 @@ class DiseaseService():
     
     def CreateSymptomsList(self,id,data):
         endpoint = self.Base_Url + f'disease/create/symptoms/{id}'
+        print(data)
         try:
             response = requests.post(endpoint,json=data)
             if response.status_code == 200:
@@ -104,12 +106,10 @@ class DiseaseService():
         except Exception as e:
             messagebox.showerror("Error", f"Unknown error: {e}")
 
-
-    def CreateSignsList(self,id,data):
+    def CreateSignsList(self,id:int,data:List[int]):
         endpoint = self.Base_Url + f'disease/create/signs/{id}'
-        response = requests.post(endpoint, json=data)
         try:
-            response = requests.post(endpoint)
+            response = requests.post(endpoint,json=data)
             if response.status_code == 200:
                 return response.json()
             else:

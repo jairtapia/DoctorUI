@@ -25,7 +25,6 @@ class DiseaseCrud(customtkinter.CTkFrame):
         self.grid_columnconfigure(1, weight=1)
         self.grid_columnconfigure(2, weight=1)
         self.grid_rowconfigure(2, weight=1)
-        print(self.currentRole)
         
     def updateTable(self):
         # Asegúrate de que self.data sea una lista de diccionarios o listas
@@ -86,8 +85,7 @@ class DiseaseCrud(customtkinter.CTkFrame):
         self.updateData()
 
     def delete(self,id):
-        if self.controller.Delete(id):
-            self.controller.DeleteDiseaseSymptoms(id)
-            self.controller.DeleteDiseaseSigns(id)
+        if self.controller.DeleteDiseaseSymptoms(id) and self.controller.DeleteDiseaseSigns(id):
+            self.controller.Delete(id)
         self.updateData()
 
