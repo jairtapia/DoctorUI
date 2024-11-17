@@ -81,8 +81,9 @@ class Diagnostico(ctk.CTk):
                 )
             iddg = self.controller.CreateDiagnostic(diagnostico)['id']
             if iddg:
-                self.controller.UpdateHistorical(iddg,paciente)
-                print(self.controller.GetHistorical(paciente))
+                if self.controller.UpdateHistorical(iddg,paciente):
+                    messagebox.showinfo("Guardado", "El registro se ha guardado correctamente.")
+                
         except Exception as e:
             messagebox.showerror("Error", f"Unknown error: {e}")
         

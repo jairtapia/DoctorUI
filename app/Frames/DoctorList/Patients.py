@@ -1,6 +1,7 @@
 import customtkinter
 from assets.themes.AdminPalette import AdminTheme
 from controller.PatientController import PatientController
+from Frames.Historic.dataPatient import DataPatient
 class patientsList(customtkinter.CTkScrollableFrame):
     def __init__(self, master,**kwargs):
         super().__init__(master, **kwargs)
@@ -21,7 +22,7 @@ class patientsList(customtkinter.CTkScrollableFrame):
             self.create_Patient_card(Patient)
 
     def create_Patient_card(self, Patient):
-        card = customtkinter.CTkFrame(self, corner_radius=10, border_color="gray", border_width=1, fg_color="white")
+        card = customtkinter.CTkFrame(self, corner_radius=10, border_color="white", border_width=1, fg_color="white")
         card.grid(sticky="ew", padx=10, pady=2)  # Reducir el padding vertical
         customtkinter.CTkLabel(card, text=f"Nombre: {Patient['name']}", text_color="black").grid(row=0, column=1, padx=5, pady=1, sticky="w")  
         customtkinter.CTkLabel(card, text=f"Apellido Paterno: {Patient['last_name_f']}", text_color="black").grid(row=0, column=2, padx=5, pady=1, sticky="w")  
@@ -30,7 +31,10 @@ class patientsList(customtkinter.CTkScrollableFrame):
         customtkinter.CTkLabel(card, text=f"Teléfono: {Patient['phone']}", text_color="black").grid(row=1, column=1, padx=5, pady=1, sticky="w")  
         customtkinter.CTkLabel(card, text=f"Dirección: {Patient['address']}", text_color="black").grid(row=1, column=2, padx=5, pady=1, sticky="w")  
         customtkinter.CTkLabel(card, text=f"Estado: {Patient['state']}", text_color="black").grid(row=1, column=3, padx=5, pady=1, sticky="w")  
-        customtkinter.CTkButton(card, text="Ver más", command=lambda: self.openPatient(Patient['patient_id'])).grid(row=2, column=0, columnspan=4, pady=1)  
+        customtkinter.CTkButton(card, text="Ver historial", command=lambda: self.openPatient(Patient['patient_id'])).grid(row=2, column=0, columnspan=4, pady=1)  
 
     def openPatient(self,id):
-        print(id)
+        ventana_pruebas = DataPatient(id)
+        ventana_pruebas.title("historial")
+        ventana_pruebas.geometry("800x500")
+        ventana_pruebas.mainloop()
