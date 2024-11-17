@@ -88,8 +88,9 @@ class Diagnostico(ctk.CTk):
             messagebox.showerror("Error", f"Unknown error: {e}")
         
     def verAnalisis(self):
-        id = self.DiseaseBox.getValuesIDs()[0]
-        self.modal = TestModal(master=self,id = id)
+        nombre = self.DiseaseBox.getValueNames()[0]
+        enfermedad = self.controllerDisease.findByName(nombre)['id']
+        self.modal = TestModal(master=self,id = enfermedad)
         self.modal.protocol("WM_DELETE_WINDOW", self.destroyModal)
         self.modal.grab_set()  # Para evitar interacción con otras ventanas
         self.modal.lift()  # Elevar la ventana modal

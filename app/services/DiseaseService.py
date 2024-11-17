@@ -148,3 +148,14 @@ class DiseaseService():
                 messagebox.showerror("Error", f"Failed to retrieve signs: {response.status_code}")
         except Exception as e:
             messagebox.showerror("Error", f"Unknown error: {e}")
+
+    def getTest(self,id:int):
+        endpoint = self.Base_Url + f'disease/test/{id}'
+        try:
+            response = requests.get(endpoint)
+            if response.status_code == 200:
+                return response.json()
+            else:
+                messagebox.showerror("Error", f"Failed to retrieve tests: {response.status_code}")
+        except Exception as e:
+            messagebox.showerror("Error", f"Unknown error: {e}")

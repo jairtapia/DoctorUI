@@ -41,3 +41,6 @@ class DiseaseController():
 
     def DeleteDiseaseSigns(self, id:int):
         return self.Myservice.DeleteSigns(id)
+    
+    def getTest(self,id:int):
+        return self.Myservice.getTest(id)
