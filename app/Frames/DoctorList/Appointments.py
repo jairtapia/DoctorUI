@@ -1,6 +1,7 @@
 import customtkinter
 from assets.themes.AdminPalette import AdminTheme
 from controller.AppointmentController import appointmentController
+from Frames.Diagnostico.Diagnostico import Diagnostico
 class appointments(customtkinter.CTkScrollableFrame):
     def __init__(self, master, id,**kwargs):
         super().__init__(master, **kwargs)
@@ -32,3 +33,7 @@ class appointments(customtkinter.CTkScrollableFrame):
 
     def openAppointment(self,id):
         print(id)
+        ventana_pruebas = Diagnostico(self.id,id)
+        ventana_pruebas.title("Diagnostico")
+        ventana_pruebas.geometry("740x530")
+        ventana_pruebas.mainloop()

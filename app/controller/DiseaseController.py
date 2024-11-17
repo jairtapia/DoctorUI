@@ -14,6 +14,9 @@ class DiseaseController():
 
     def findById(self, Id: int):
         return self.Myservice.SearchById(Id)
+    
+    def findByName(self, name: str):
+        return self.Myservice.searchByName(name)
 
     def EditDiesase(self, Disease: DiseaseDto, id: int):
         return self.Myservice.EditDisease(Disease, id)

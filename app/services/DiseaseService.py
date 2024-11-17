@@ -38,9 +38,19 @@ class DiseaseService():
         except Exception as e:
             messagebox.showerror("Error", f"Error desconocido: {e}")
 
-
     def SearchById(self, id):
         endpoint = self.Base_Url + f'disease/{id}'
+        try:
+            response = requests.get(endpoint)
+            if response.status_code == 200:
+                return response.json()
+            else:
+                messagebox.showerror("Error", f"Sign Not Found: {response.status_code}")
+        except Exception as e:
+            messagebox.showerror("Error", f"Unknown error: {e}")
+
+    def searchByName(self, name):
+        endpoint = self.Base_Url + f'disease/find/{name}'
         try:
             response = requests.get(endpoint)
             if response.status_code == 200:
