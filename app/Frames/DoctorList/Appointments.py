@@ -13,7 +13,7 @@ class appointments(customtkinter.CTkScrollableFrame):
         self.getAppointments()
 
     def getAppointments(self):
-        content = self.MyController.getAppointmentsByDoctor(self.id) 
+        content = self.MyController.getAppointmentsByDoctor(self.id)
         for widget in self.winfo_children():
             widget.destroy()
         if not content:
@@ -25,15 +25,15 @@ class appointments(customtkinter.CTkScrollableFrame):
     def create_appointment_card(self, appointment):
         card = customtkinter.CTkFrame(self, corner_radius=10, border_color="gray", border_width=1, fg_color="white")
         card.grid(sticky="ew", padx=10, pady=2)  # Reducir el padding vertical
-        customtkinter.CTkLabel(card, text=f"Fecha: {appointment['date']}", text_color="black").grid(row=0, column=0, padx=5, pady=1, sticky="w")  
-        customtkinter.CTkLabel(card, text=f"Hora: {appointment['time']}", text_color="black").grid(row=0, column=1, padx=5, pady=1, sticky="w")  
-        customtkinter.CTkLabel(card, text=f"Paciente: {appointment['patient']['name']} {appointment['patient']['lastname']}", text_color="black").grid(row=0, column=2, padx=5, pady=1, sticky="w")  
-        customtkinter.CTkLabel(card, text=f"Sala: {appointment['clinic_room']['numero']}", text_color="black").grid(row=0, column=3, padx=5, pady=1, sticky="w")  
-        customtkinter.CTkButton(card, text="Ver más", command=lambda: self.openAppointment(appointment['id'])).grid(row=1, column=0, columnspan=4, pady=1)  
+        customtkinter.CTkLabel(card, text=f"Fecha: {appointment['date']}", text_color="black").grid(row=0, column=0, padx=5, pady=1, sticky="w")
+        customtkinter.CTkLabel(card, text=f"Hora: {appointment['time']}", text_color="black").grid(row=0, column=1, padx=5, pady=1, sticky="w")
+        customtkinter.CTkLabel(card, text=f"Paciente: {appointment['patient']['name']} {appointment['patient']['lastname']}", text_color="black").grid(row=0, column=2, padx=5, pady=1, sticky="w")
+        customtkinter.CTkLabel(card, text=f"Sala: {appointment['clinic_room']['numero']}", text_color="black").grid(row=0, column=3, padx=5, pady=1, sticky="w")
+        customtkinter.CTkButton(card, text="Ver más", command=lambda: self.openAppointment(appointment['patient_id'],appointment['date'])).grid(row=1, column=0, columnspan=4, pady=1)
 
-    def openAppointment(self,id):
+    def openAppointment(self,id, fecha):
         print(id)
-        ventana_pruebas = Diagnostico(self.id,id)
+        ventana_pruebas = Diagnostico(self.id,id, fecha)
         ventana_pruebas.title("Diagnostico")
         ventana_pruebas.geometry("740x530")
         ventana_pruebas.mainloop()

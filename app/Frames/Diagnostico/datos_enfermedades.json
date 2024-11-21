@@ -1,0 +1,258 @@
+[
+    {
+        "nombre": "Asma",
+        "sintomas": [
+            "Sibilancias",
+            "Cianosis",
+            "Fatiga",
+            "Tos persistente"
+        ]
+    },
+    {
+        "nombre": "EPOC",
+        "sintomas": [
+            "Sibilancias",
+            "Dificultad para respirar",
+            "Cianosis",
+            "Fatiga",
+            "Tos persistente"
+        ]
+    },
+    {
+        "nombre": "Fibrosis Pulmonar",
+        "sintomas": [
+            "Cianosis",
+            "Fatiga",
+            "Falta de aire al hacer ejercicio",
+            "Tos persistente"
+        ]
+    },
+    {
+        "nombre": "Sindrome de Apnea del Sueno",
+        "sintomas": [
+            "Ronquidos fuertes",
+            "Pausas en la respiracion durante el sueno",
+            "Somnolencia diurna excesiva"
+        ]
+    },
+    {
+        "nombre": "Hipertension Pulmonar",
+        "sintomas": [
+            "Dolor en el pecho",
+            "Dificultad para respirar",
+            "Palpitaciones"
+        ]
+    },
+    {
+        "nombre": "Bronquitis",
+        "sintomas": [
+            "Sibilancias",
+            "Tos persistente",
+            "Fatiga"
+        ]
+    },
+    {
+        "nombre": "Cancer de Pulmon",
+        "sintomas": [
+            "Tos persistente",
+            "Perdida de peso",
+            "Dolor en el pecho",
+            "Cianosis"
+        ]
+    },
+    {
+        "nombre": "Neumonia",
+        "sintomas": [
+            "Tos persistente",
+            "Fiebre",
+            "Dificultad para respirar",
+            "Fatiga"
+        ]
+    },
+    {
+        "nombre": "Sarcoidosis",
+        "sintomas": [
+            "Inflamacion de ganglios linfaticos",
+            "Fiebre",
+            "Fatiga"
+        ]
+    },
+    {
+        "nombre": "Bronquiectasias",
+        "sintomas": [
+            "Sibilancias",
+            "Tos persistente",
+            "Falta de aire al hacer ejercicio"
+        ]
+    },
+    {
+        "nombre": "EPOC",
+        "sintomas": [
+            "Cianosis",
+            "Tos persistente",
+            "Fatiga",
+            "Dificultad para respirar"
+        ]
+    },
+    {
+        "nombre": "Asma",
+        "sintomas": [
+            "Dificultad para respirar",
+            "Opresi\u00f3n en el pecho",
+            "Fatiga",
+            "Sensaci\u00f3n de presi\u00f3n en el pecho",
+            "Sibilancias",
+            "Cianosis"
+        ]
+    },
+    {
+        "nombre": "EPOC",
+        "sintomas": [
+            "Dificultad para respirar",
+            "Fatiga",
+            "Falta de aire al hacer ejercicio",
+            "P\u00e9rdida de peso",
+            "Sensaci\u00f3n de presi\u00f3n en el pecho",
+            "Sibilancias",
+            "Cianosis",
+            "Sonidos pulmonares anormales"
+        ]
+    },
+    {
+        "nombre": "Fibrosis Pulmonar",
+        "sintomas": [
+            "Dificultad para respirar",
+            "Fatiga",
+            "Falta de aire al hacer ejercicio",
+            "P\u00e9rdida de peso",
+            "Sensaci\u00f3n de presi\u00f3n en el pecho",
+            "Cianosis",
+            "Inflamaci\u00f3n de ganglios linf\u00e1ticos",
+            "Producci\u00f3n de esputo espeso"
+        ]
+    },
+    {
+        "nombre": "S\u00edndrome de Apnea del Sue\u00f1o",
+        "sintomas": [
+            "Fatiga",
+            "Somnolencia diurna excesiva",
+            "Falta de concentraci\u00f3n",
+            "Dolores de cabeza matutinos",
+            "Ronquidos fuertes",
+            "Pausas en la respiraci\u00f3n durante el sue\u00f1o",
+            "Tos con sangre o esputo sanguinolento",
+            "Sonidos pulmonares anormales"
+        ]
+    },
+    {
+        "nombre": "Hipertensi\u00f3n Pulmonar",
+        "sintomas": [
+            "Dificultad para respirar",
+            "Opresi\u00f3n en el pecho",
+            "Fatiga",
+            "Falta de aire al hacer ejercicio",
+            "Dolor en el pecho",
+            "Tos persistente",
+            "Cianosis",
+            "Palpitaciones",
+            "Hinchaz\u00f3n en piernas y abdomen",
+            "Soplos card\u00edacos"
+        ]
+    },
+    {
+        "nombre": "Bronquitis",
+        "sintomas": [
+            "Dificultad para respirar",
+            "Opresi\u00f3n en el pecho",
+            "Dolor en el pecho",
+            "Sensaci\u00f3n de presi\u00f3n en el pecho",
+            "Sibilancias",
+            "Sonidos pulmonares anormales",
+            "Soplos card\u00edacos"
+        ]
+    },
+    {
+        "nombre": "C\u00e1ncer de Pulm\u00f3n",
+        "sintomas": [
+            "Dificultad para respirar",
+            "Opresi\u00f3n en el pecho",
+            "Fatiga",
+            "P\u00e9rdida de peso",
+            "Dolor en el pecho",
+            "Sensaci\u00f3n de presi\u00f3n en el pecho",
+            "Cianosis",
+            "Tos con sangre o esputo sanguinolento",
+            "Sonidos pulmonares anormales",
+            "Fiebre"
+        ]
+    },
+    {
+        "nombre": "Neumon\u00eda",
+        "sintomas": [
+            "Dificultad para respirar",
+            "Fatiga",
+            "P\u00e9rdida de peso",
+            "Dolor en el pecho",
+            "Tos persistente",
+            "Sensaci\u00f3n de presi\u00f3n en el pecho",
+            "Sonidos pulmonares anormales",
+            "Fiebre",
+            "Inflamaci\u00f3n de ganglios linf\u00e1ticos",
+            "Soplos card\u00edacos"
+        ]
+    },
+    {
+        "nombre": "Sarcoidosis",
+        "sintomas": [
+            "Dificultad para respirar",
+            "Fatiga",
+            "P\u00e9rdida de peso",
+            "Tos persistente",
+            "Sensaci\u00f3n de presi\u00f3n en el pecho",
+            "Cianosis",
+            "Inflamaci\u00f3n de ganglios linf\u00e1ticos",
+            "Producci\u00f3n de esputo espeso",
+            "Soplos card\u00edacos"
+        ]
+    },
+    {
+        "nombre": "Bronquiectasias",
+        "sintomas": [
+            "Dificultad para respirar",
+            "Fatiga",
+            "P\u00e9rdida de peso",
+            "Sensaci\u00f3n de presi\u00f3n en el pecho",
+            "Sibilancias",
+            "Tos con sangre o esputo sanguinolento",
+            "Producci\u00f3n de esputo espeso",
+            "Soplos card\u00edacos"
+        ]
+    },
+    {
+        "nombre": "embolo pulmonar",
+        "sintomas": [
+            "Dificultad para respirar",
+            "Opresi\u00f3n en el pecho",
+            "Dolor en el pecho",
+            "Pausas en la respiraci\u00f3n durante el sue\u00f1o",
+            "Hinchaz\u00f3n en piernas y abdomen"
+        ]
+    },
+    {
+        "nombre": "estupides",
+        "sintomas": [
+            "Dificultad para respirar",
+            "Opresi\u00f3n en el pecho",
+            "Fatiga",
+            "Falta de aire al hacer ejercicio",
+            "P\u00e9rdida de peso",
+            "Dolor en el pecho",
+            "Somnolencia diurna excesiva",
+            "Sibilancias",
+            "Cianosis",
+            "Ronquidos fuertes",
+            "Pausas en la respiraci\u00f3n durante el sue\u00f1o",
+            "Palpitaciones"
+        ]
+    }
+]

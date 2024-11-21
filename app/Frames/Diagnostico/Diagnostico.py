@@ -8,19 +8,21 @@ from dto.Diagnostic import DiagnosticDto
 from controller.DiagnosticController import DiagnosticController
 from controller.DiseaseController import DiseaseController
 from tkinter import messagebox
+from Frames.Diagnostico.motor import MotorDeInferenciaIncremental
 
 class Diagnostico(ctk.CTk):
-    def __init__(self, Medico, paciente, **kwargs):
+    def __init__(self, Medico, paciente,fecha,**kwargs):
         super().__init__(**kwargs)
         self.controller = DiagnosticController()
-        self.date = date.today()
+        self.date = fecha
         self.medicoid = Medico
         self.pacienteid = paciente
         self.controllerSymptoms = SymptomController()
         self.controllerSigns = SignController()
         self.controllerDisease = DiseaseController()
         self.ProbDiseases = None
-        # Configuración de la ventana
+        self.motor_inferencia = MotorDeInferenciaIncremental()
+        #Configuración de la ventana
         self.configure(fg_color='#82a5b9', corner_radius=15, width=500, height=600)
         # Crear el frame con scroll
         self.scroll_frame = ctk.CTkScrollableFrame(self, fg_color='#82a5b9', width=500, height=600, corner_radius=15)
@@ -54,11 +56,12 @@ class Diagnostico(ctk.CTk):
 
     def updateDiseases(self):
         if hasattr(self, 'DiseaseBox'):
-            self.DiseaseBox.grid_forget() 
+            self.DiseaseBox.grid_forget()
             self.DiseaseBox.destroy()
+        # Mostrar enfermedades con probabilidad formateada
         self.DiseaseBox = Box(master=self.scroll_frame, text='Enfermedades', selected=None, data=self.ProbDiseases)
         self.DiseaseBox.grid(row=4, column=0, columnspan=2, pady=10, padx=10)
-    
+
     def guardar(self):
         try:
             medico = self.medicoid
@@ -83,26 +86,54 @@ class Diagnostico(ctk.CTk):
             if iddg:
                 if self.controller.UpdateHistorical(iddg,paciente):
                     messagebox.showinfo("Guardado", "El registro se ha guardado correctamente.")
-                
+
         except Exception as e:
             messagebox.showerror("Error", f"Unknown error: {e}")
-        
+
     def verAnalisis(self):
         nombre = self.DiseaseBox.getValueNames()[0]
         enfermedad = self.controllerDisease.findByName(nombre)['id']
-        self.modal = TestModal(master=self,id = enfermedad)
+        self.modal = TestModal(master=self, id=enfermedad)
         self.modal.protocol("WM_DELETE_WINDOW", self.destroyModal)
         self.modal.grab_set()  # Para evitar interacción con otras ventanas
         self.modal.lift()  # Elevar la ventana modal
         self.modal.focus_set()
-        
+
     def destroyModal(self):
         self.modal.destroy()
         self.modal = None
 
     def Predecir(self):
-        print(self.SymptomsBox.getValueNames())
-        print(self.SingsBox.getValueNames())
-        self.ProbDiseases = [{"name":"asma"},{"name":"epoc"}]
-        self.updateDiseases()
+        """
+        Realiza la predicción de enfermedades con base en los signos y síntomas seleccionados.
+        """
 
+        # Comprobar que no existan nuevas enfermedades
+        self.motor_inferencia.sincronizar_enfermedades()
+
+        # Obtener signos y síntomas seleccionados
+        signos = self.SingsBox.getValueNames()
+        sintomas = self.SymptomsBox.getValueNames()
+
+        # Imprimir los valores de signos y síntomas para depuración
+        print("Signos seleccionados:", signos)
+        print("Síntomas seleccionados:", sintomas)
+
+        # Validar que se hayan proporcionado signos y síntomas
+        if not signos and not sintomas:
+            messagebox.showerror("Error", "Ingrese algún síntoma o signo.")
+            return  # Salir de la función si la validación falla
+
+        # Usar el motor de inferencia para predecir
+        try:
+            resultados = self.motor_inferencia.predecir(signos, sintomas)
+            print("Resultados de la predicción:", resultados)  # Para depuración
+
+            # Actualizar enfermedades probables en la interfaz
+            self.ProbDiseases = [{"name": r[0], "confidence": f"{r[1]:.2f}%"} for r in resultados]
+            self.updateDiseases()
+
+        except Exception as e:
+            # Manejar cualquier error inesperado durante la predicción
+            print(f"Error durante la predicción: {e}")
+            messagebox.showerror("Error", "Ocurrió un error durante la predicción. Por favor, intente nuevamente.")

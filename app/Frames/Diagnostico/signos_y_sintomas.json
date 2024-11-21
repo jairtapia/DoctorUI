@@ -1,0 +1,42 @@
+[
+    {
+        "nombre": "Asma",
+        "sintomas": ["Sibilancias", "Cianosis", "Fatiga", "Tos persistente"]
+    },
+    {
+        "nombre": "EPOC",
+        "sintomas": ["Sibilancias", "Dificultad para respirar", "Cianosis", "Fatiga", "Tos persistente"]
+    },
+    {
+        "nombre": "Fibrosis Pulmonar",
+        "sintomas": ["Cianosis", "Fatiga", "Falta de aire al hacer ejercicio", "Tos persistente"]
+    },
+    {
+        "nombre": "Síndrome de Apnea del Sueño",
+        "sintomas": ["Ronquidos fuertes", "Pausas en la respiración durante el sueño", "Somnolencia diurna excesiva"]
+    },
+    {
+        "nombre": "Hipertensión Pulmonar",
+        "sintomas": ["Dolor en el pecho", "Dificultad para respirar", "Palpitaciones"]
+    },
+    {
+        "nombre": "Bronquitis",
+        "sintomas": ["Sibilancias", "Tos persistente", "Fatiga"]
+    },
+    {
+        "nombre": "Cáncer de Pulmón",
+        "sintomas": ["Tos persistente", "Pérdida de peso", "Dolor en el pecho", "Cianosis"]
+    },
+    {
+        "nombre": "Neumonía",
+        "sintomas": ["Tos persistente", "Fiebre", "Dificultad para respirar", "Fatiga"]
+    },
+    {
+        "nombre": "Sarcoidosis",
+        "sintomas": ["Inflamación de ganglios linfáticos", "Fiebre", "Fatiga"]
+    },
+    {
+        "nombre": "Bronquiectasias",
+        "sintomas": ["Sibilancias", "Tos persistente", "Falta de aire al hacer ejercicio"]
+    }
+]
